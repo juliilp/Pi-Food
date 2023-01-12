@@ -1,0 +1,19 @@
+.button_paginado {
+  border-radius: 10px;
+ 
+  margin: 6px;
+  width: 30px;
+  height: 30px;
+  font-weight: 700;
+  
+}
+
+.button_paginado:hover {
+  background-color: gray;
+  color: white;
+}
+
+.button_paginado:active {
+
+  font-size: 10px;
+}

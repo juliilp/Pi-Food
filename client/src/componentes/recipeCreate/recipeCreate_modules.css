@@ -1,0 +1,92 @@
+body {
+  background-image: url("./wepik-photo-mode-20221022-12818.jpeg");
+}
+
+textarea {
+  resize: none;
+  text-align:start;
+  background-color: rgb(157, 154, 154);
+  box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+  -webkit-box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+  -moz-box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+}
+
+textarea::placeholder {
+  font-weight: 700;
+}
+
+.recipeCreate_container{
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.recipe_card{
+  background-color: #5f5050;
+  box-shadow: -4px -10px 192px -13px rgba(5,3,3,1) inset;
+  -webkit-box-shadow: -4px -10px 192px -13px rgba(5,3,3,1) inset;
+  -moz-box-shadow: -4px -10px 192px -13px rgba(5,3,3,1) inset;
+  position: relative;
+ border-radius: 30px;
+  height: 900px;
+  width: 500px;
+}
+
+.Titulo {
+  font-family: Times New Roman, Helvetica, sans-serif;
+  letter-spacing: 7px;
+  font-weight: 700;
+  font-size: 20;
+  text-shadow: 20px -3px 8px rgba(0,0,0,0.6);
+}
+
+input {
+  background-color: rgb(157, 154, 154);
+  border-radius: 10px;
+  padding: 5px 0px;
+  margin: 10px 0px;
+  color: white;
+  box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+-webkit-box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+-moz-box-shadow: -3px -6px 107px 49px rgba(0,0,0,0.69) inset;
+}
+
+label {
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-right: 7px;
+  font-size: 20px;
+}
+
+
+.container_buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Volver {
+  font-weight: 700;
+  padding: 7px 40px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.Crear_Receta {
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Volver:hover {
+  background-color: #191818;
+  color: white;
+}
+
+.Crear_Receta:hover {
+  background-color: #191818;
+  color: white;
+}
