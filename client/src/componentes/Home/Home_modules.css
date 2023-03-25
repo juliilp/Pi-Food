@@ -1,0 +1,58 @@
+.main-container-home {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  background-color: rgb(244, 244, 245);
+}
+
+.navbar-home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  height: 30vw;
+}
+.opciones-home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.opciones-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+}
+
+.select-home {
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0px;
+  margin: 7px 20px;
+  width: 205px;
+  font-weight: 500;
+  background-color: #c7c7cb;
+  background-color: #fff;
+  border: none;
+}
+
+.crear_recetas {
+  margin: 20px;
+  margin-bottom: 70px;
+  padding: 7px 40px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px 0;
+  color: white;
+  background-color: #ff7070;
+  font-weight: bold;
+}
+
+.container-card {
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
