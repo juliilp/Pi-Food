@@ -38,6 +38,7 @@
 }
 
 .button-detail {
+  cursor: pointer;
   padding: 7px 40px;
   border-radius: 10px;
   border: none;

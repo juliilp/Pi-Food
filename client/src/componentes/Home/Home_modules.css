@@ -7,10 +7,17 @@
 
 .navbar-home {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  height: 30vw;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.container-label-select {
+  display: flex;
+  flex-direction: column;
 }
 .opciones-home-container {
   display: flex;
@@ -38,21 +45,23 @@
   border: none;
 }
 
-.crear_recetas {
-  margin: 20px;
-  margin-bottom: 70px;
-  padding: 7px 40px;
-  border-radius: 10px;
-  border: none;
-  margin: 10px 0;
-  color: white;
-  background-color: #ff7070;
-  font-weight: bold;
-}
-
 .container-card {
   padding: 0 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1200px) {
+  .opciones-home {
+    flex-direction: row;
+  }
+
+  .navbar-home {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+  }
 }

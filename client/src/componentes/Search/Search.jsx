@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameRecipes } from "../../redux/actions";
 import style from "./Search_modules.css";
-
+import { Link } from "react-router-dom";
+import { BiSearch } from "react-icons/bi";
 const SearchBar = () => {
   const dispatch = useDispatch();
   // const getRecipes = useSelector((state) => state.recipesName)
@@ -29,16 +30,17 @@ const SearchBar = () => {
           placeholder="Search..."
           onChange={(e) => handlerInputChange(e)}
         />
-      </div>
-      <div>
         <button
           className="button_search"
           type="submit"
           onClick={(e) => handlerSubmit(e)}
         >
-          Enviar
+          <BiSearch size={15} color="black" />
         </button>
       </div>
+      <Link to="/recipes/">
+        <button className="crear_recetas">Crear Receta</button>
+      </Link>
     </div>
   );
 };

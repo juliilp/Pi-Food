@@ -9,7 +9,6 @@ import {
 } from "../../redux/actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
-import { Link } from "react-router-dom";
 import SearchBar from "../Search/Search";
 import style from "./Home_modules.css";
 
@@ -67,64 +66,69 @@ const Home = () => {
   return (
     <div className="main-container-home">
       <div className="navbar-home">
-        <SearchBar />
-      </div>
-      <div>
+        <div className="search-bar-home">
+          <SearchBar />
+        </div>
         <div className="opciones-home-container">
           <div className="opciones-home">
-            <label>Order By Name</label>
-            <select
-              className="select-home"
-              defaultValue={"DEFAULT"}
-              onChange={(e) => handleSort(e)}
-            >
-              <option className="options" value="DEFAULT" disabled>
-                Choose an option
-              </option>
-              <option className="options" value="asc">
-                A to Z
-              </option>
-              <option className="options" value="desc">
-                Z to A
-              </option>
-            </select>
-            <label>Diets types</label>
-            <select
-              className="select-home"
-              onChange={(e) => handleFilterByTypeDiet(e)}
-            >
-              <option value="all">Choose an option</option>
-              {diets &&
-                diets.map((e) => {
-                  return (
-                    <option key={e.id} value={e.name}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-            </select>
-            <label> Order by Score</label>
-            <select
-              className="select-home"
-              defaultValue={"DEFAULT"}
-              onChange={(e) => handleSortScore(e)}
-            >
-              <option className="options" value="DEFAULT">
-                Choose an option
-              </option>
-              <option className="options" value="max">
-                Min to Max
-              </option>
-              <option className="options" value="min">
-                Max to Min
-              </option>
-            </select>
+            <div className="container-label-select">
+              <label>Order By Name</label>
+              <select
+                className="select-home"
+                defaultValue={"DEFAULT"}
+                onChange={(e) => handleSort(e)}
+              >
+                <option className="options" value="DEFAULT" disabled>
+                  Choose an option
+                </option>
+                <option className="options" value="asc">
+                  A to Z
+                </option>
+                <option className="options" value="desc">
+                  Z to A
+                </option>
+              </select>
+            </div>
+            <div className="container-label-select">
+              <label>Diets types</label>
+              <select
+                className="select-home"
+                onChange={(e) => handleFilterByTypeDiet(e)}
+              >
+                <option value="all">Choose an option</option>
+                {diets &&
+                  diets.map((e) => {
+                    return (
+                      <option key={e.id} value={e.name}>
+                        {e.name}
+                      </option>
+                    );
+                  })}
+              </select>
+            </div>
 
-            <Link to="/recipes/">
-              <button className="crear_recetas">Crear Receta</button>
-            </Link>
+            <div className="container-label-select">
+              <label> Order by Score</label>
+              <select
+                className="select-home"
+                defaultValue={"DEFAULT"}
+                onChange={(e) => handleSortScore(e)}
+              >
+                <option className="options" value="DEFAULT">
+                  Choose an option
+                </option>
+                <option className="options" value="max">
+                  Min to Max
+                </option>
+                <option className="options" value="min">
+                  Max to Min
+                </option>
+              </select>
+            </div>
           </div>
         </div>
+      </div>
+      <div>
         {/* Aca estaba el paginado  */}
         <div className="container-card">
           {currentRecipes.map((recipe) => (
