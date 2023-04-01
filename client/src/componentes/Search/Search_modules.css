@@ -26,6 +26,7 @@
 }
 
 .crear_recetas {
+  cursor: pointer;
   position: relative;
   padding: 12px 20px;
   border-radius: 10px;
@@ -36,6 +37,7 @@
 }
 
 ::placeholder {
+  border: none;
   font-weight: 600;
 }
 

@@ -72,7 +72,7 @@ const Home = () => {
         <div className="opciones-home-container">
           <div className="opciones-home">
             <div className="container-label-select">
-              <label>Order By Name</label>
+              <label>Order by name</label>
               <select
                 className="select-home"
                 defaultValue={"DEFAULT"}
@@ -108,7 +108,7 @@ const Home = () => {
             </div>
 
             <div className="container-label-select">
-              <label> Order by Score</label>
+              <label> Order by score</label>
               <select
                 className="select-home"
                 defaultValue={"DEFAULT"}

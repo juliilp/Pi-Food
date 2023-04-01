@@ -15,10 +15,12 @@ const Card = ({
       <img src={image} alt="img not found" className="imagen-card-home" />
       <span className="name-title-card">{name}</span>
       <h4 className="healthscore-card">{healthScore}</h4>
-      <p className="dietas-card">{diets}</p>
-      <Link to={`/Home/${id}`}>
-        <button className="button-detail">{detail}</button>
-      </Link>
+      <p className="dietas-card">{diets ? diets : "does not have diets"}</p>
+      <div className="button-container-card">
+        <Link to={`/Home/${id}`}>
+          <button className="button-detail">{detail}</button>
+        </Link>
+      </div>
     </div>
   );
 };
