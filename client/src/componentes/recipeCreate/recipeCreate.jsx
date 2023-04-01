@@ -1,138 +1,162 @@
-import React, {useState, useEffect} from 'react'
-import {Link, useHistory} from 'react-router-dom'
-import {postRecipes, getDiets} from '../../redux/actions'
-import {useDispatch, useSelector} from 'react-redux'
-import s from './recipeCreate_modules.css'
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { postRecipes, getDiets } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import s from "./recipeCreate_modules.css";
 
 const RecipeCreate = () => {
-    const dispatch = useDispatch()
-    const diets = useSelector((state) => state.diets)
-    const history = useHistory()
-    const [error, setError] = useState({})
-    const [input, setInput] = useState({
-      name : "",
-      image : "",
-      healthScore : "",
-      stepByStep : "",
-      dishSummary : "",
-      diets : [],
-      
-    })
+  const dispatch = useDispatch();
+  const diets = useSelector((state) => state.diets);
+  const history = useHistory();
+  const [error, setError] = useState({});
+  const [input, setInput] = useState({
+    name: "",
+    image: "",
+    healthScore: "",
+    stepByStep: "",
+    dishSummary: "",
+    diets: [],
+  });
 
-    const validacionName = (input) => {
-      const error = {}
-      if (!input.name) {
-        error.name = "Se requiere un nombre"
-      } 
-      if (!input.dishSummary) {
-        error.dishSummary = "Se require escribir"
-      }
-      return error
+  const validacionName = (input) => {
+    const error = {};
+    if (!input.name) {
+      error.name = "Se requiere un nombre";
     }
+    if (!input.dishSummary) {
+      error.dishSummary = "Se require escribir";
+    }
+    return error;
+  };
 
+  const handleInput = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    setError(
+      validacionName({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
 
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        diets: [...input.diets, e.target.value],
+      });
+    }
+    console.log(input);
+  };
 
-      const handleInput = (e) => {
-          setInput({
-            ...input,
-            [e.target.name ] : e.target.value
-          })
-          setError(validacionName({
-            ...input,
-            [e.target.name] : e.target.value
-          }))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postRecipes(input));
+    alert("Receta Creada !!");
+    setInput({
+      name: "",
+      image: "",
+      healthScore: "",
+      stepByStep: "",
+      dishSummary: "",
+      diets: [],
+    });
+    history.push("/home");
+  };
 
-      }
+  useEffect(() => {
+    dispatch(getDiets());
+  }, [dispatch]);
 
-      const handleCheck = (e) => {
-         
-        if(e.target.checked) {
-          setInput({
-            ...input,
-          diets : [...input.diets, e.target.value]
-          })
-        }
-        console.log(input);
-      }
+  return (
+    <div className="recipeCreate_container">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="recipe_card_form_container"
+      >
+        <div className="container_label_input_create">
+          <h2 className="Titulo">Create your recipe!</h2>
+          <label className="label_recipe_create">Name</label>
+          <input
+            className="input_recipe_create"
+            type="text"
+            placeholder=""
+            value={input.name}
+            name="name"
+            onChange={handleInput}
+          />
+          {error.name && <p className="error">{error.name}</p>}
 
-      const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(postRecipes(input))
-        alert("Receta Creada !!")
-        setInput({
-          name : "",
-          image : "",
-          healthScore : "",
-          stepByStep : "",
-          dishSummary : "",
-          diets : [],
-          
-        })
-        history.push("/home")
-      }
+          <label className="label_recipe_create">Image</label>
+          <input
+            className="input_recipe_create"
+            type="text"
+            placeholder=""
+            value={input.image}
+            id="imagen"
+            name="image"
+            onChange={(e) => handleInput(e)}
+          />
 
+          <label className="label_recipe_create">Health score</label>
+          <input
+            defaultValue={0}
+            type="range"
+            placeholder=""
+            value={input.healthScore}
+            name="healthScore"
+            onChange={handleInput}
+          />
+          <p className="numeroHS" defaultValue={0}>
+            {input.healthScore}
+          </p>
 
+          <label className="label_recipe_create">Step by step</label>
+          <input
+            className="input_recipe_create"
+            type="text"
+            placeholder=""
+            value={input.stepByStep}
+            name="stepByStep"
+            onChange={handleInput}
+          />
 
-
-    useEffect(() => {
-      dispatch(getDiets())
-    },[dispatch])
-
-
-    
-
-
-    
-
-    return (
-    <div className='recipeCreate_container' >
-        <div className='recipe_card' >
-        <h2 className='Titulo' >Crea tu receta !!</h2>
-      <form onSubmit={(e) => handleSubmit(e)} >
-        <div>
-          <label>Nombre:</label>
-          <input type='text' placeholder='Escribí tu nombre acá...' value={input.name} name='name' onChange={handleInput} />
-          {error.name && (<p className='error' >{error.name}</p>)}
+          <label className="label_recipe_create">Dish summary</label>
+          <textarea
+            name="dishSummary"
+            cols="40"
+            rows="3"
+            value={input.dishSummary}
+            onChange={handleInput}
+            placeholder=""
+          />
+          {error.dishSummary && <p>{error.dishSummary}</p>}
         </div>
-        <div>
-          <label >Imagen:</label>
-          <input type='text' placeholder='Pega tu imagen acá...' value={input.image} id='imagen'  name='image'  onChange={(e) => handleInput(e)} />
-        </div>
-        <div>
-          <label>healthScore:</label>
-          <input defaultValue={0} type='range' placeholder='Escribí tus puntos de salud..' value={input.healthScore} name='healthScore' onChange={handleInput} />
-          <p className='numeroHS' defaultValue={0} >{input.healthScore}</p>
-        </div>
-        <div>
-          <label>Step By Step:</label>
-          <input type='text' placeholder='Escribí tus pasos acá...' value={input.stepByStep} name='stepByStep' onChange={handleInput} />
-        </div>
-        <div>
-          <label>dishSummary:</label>
-          <textarea  name='dishSummary' cols='40' rows='3' value={input.dishSummary} onChange={handleInput} placeholder="Ingrese una Description de la Receta" />
-          {error.dishSummary && (<p>{error.dishSummary}</p>)}
-        </div>
+        <h2>Diet's types</h2>
+        {diets.map((e) => (
+          <div>
+            <label>{e.name.replace(/^\w/, (c) => c.toUpperCase())} </label>
+            <input
+              type="checkbox"
+              value={e.name}
+              name={e.name}
+              onChange={(e) => handleCheck(e)}
+            />
+          </div>
+        ))}
 
-        <h2>Tipos de Dieta: </h2>
-        {diets.map((e) => <div>
-          <label>{e.name}</label>
-          <input type='checkbox' value={e.name} name={e.name} onChange={(e) => handleCheck(e)} />
-        </div>)}
-
-          <div className='container_buttons'>
-        <Link to='/Home'><button className='Volver' >Volver</button></Link>
-            <button className='Crear_Receta'>Crear Receta</button>
-            </div>
-        
-        
+        <Link to="/Home">
+          <button className="button_create_recipe  ">Back to home</button>
+        </Link>
+        <button className="button_create_recipe boton_create ">
+          Create your recipe
+        </button>
       </form>
-             </div>
-      </div>
+    </div>
+  );
+};
 
-      
-    )
-}
-
-
-
-export default RecipeCreate
+export default RecipeCreate;
