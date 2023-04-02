@@ -11,7 +11,7 @@ import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../Search/Search";
 import style from "./Home_modules.css";
-
+import Loader from "../Loader/Loader";
 const Home = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes); //mapStateToProps
@@ -131,17 +131,21 @@ const Home = () => {
       <div>
         {/* Aca estaba el paginado  */}
         <div className="container-card">
-          {currentRecipes.map((recipe) => (
-            <Card
-              key={recipe.id}
-              name={recipe.name}
-              id={recipe.id}
-              image={recipe.image}
-              healthScore={recipe.healthScore}
-              diets={recipe.diets.map((e) => e.name + ", ")}
-              detail="Detail"
-            />
-          ))}
+          {currentRecipes.length ? (
+            currentRecipes.map((recipe) => (
+              <Card
+                key={recipe.id}
+                name={recipe.name}
+                id={recipe.id}
+                image={recipe.image}
+                healthScore={recipe.healthScore}
+                diets={recipe.diets.map((e) => e.name + ", ")}
+                detail="Detail"
+              />
+            ))
+          ) : (
+            <Loader />
+          )}
         </div>
         <Paginado
           recipesPerPage={recipesPerPage}

@@ -26,6 +26,10 @@ textarea {
   align-items: center;
 }
 
+.label_recipe_create {
+  margin: 10px 0px;
+}
+
 .input_recipe_create {
   width: 200px;
   border: none;
